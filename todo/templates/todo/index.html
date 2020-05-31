@@ -1,0 +1,73 @@
+{% load static %}
+<doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'todo/css/style.css' %}">
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <p>{{message|safe}}</p>
+
+    {% if request.user.is_superuser %}
+    <a href="{% url 'logout' %}">
+    <button>ログアウト</button>
+    </a>
+    {% else %}
+    <a href="{% url 'login' %}">
+    <button>ログイン</button>
+    </a>
+    {% endif %}
+    <br>
+    <br>    
+    {% if request.user.is_superuser %}
+    <table>
+        <form action="{% url 'todo' %}" method="post">
+        {% csrf_token%}
+        {{form}}
+        <th></th><td><input type="submit" value="追加"></td>
+        </form>
+    </table>
+    <br>
+    <br>
+    {% endif %}
+    
+    {% if request.user.is_superuser %}    
+    <table>
+        <tr>
+            <th>やることリスト</th>
+            <th></th>
+            <th></th>
+        </tr>
+    {% for item in data %}
+        <tr>
+            <td>{{item.do}}</td>
+            <td><a href="{% url 'done' item.id %}">完了</a></td>
+            <td><a href="{% url 'delete' item.id %}">削除</a></td>
+        </tr>
+    {% endfor %}       
+    </table>
+    <br>
+    <br>
+    {% endif %}
+
+    {% if request.user.is_superuser %} 
+    <table>
+    <tr>
+            <th>完了リスト</th>
+            <th>完了日時</th>
+        </tr>
+    {% for item in donedata %}
+        <tr>
+            <td>{{item.done}}</td>
+            <td>{{item.donetime}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+    
+</body>
+</html>
+        

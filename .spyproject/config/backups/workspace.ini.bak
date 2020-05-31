@@ -1,0 +1,10 @@
+[workspace]
+restore_data_on_startup = True
+save_data_on_exit = True
+save_history = True
+save_non_project_files = False
+
+[main]
+version = 0.2.0
+recent_files = ['..\\..\\.spyder-py3\\temp.py', 'todo\\models.py', 'todo_app\\settings.py', 'todo\\migrations\\__init__.py', 'todo\\migrations\\0001_initial.py', 'todo\\admin.py', 'todo\\views.py', 'todo\\urls.py', 'todo_app\\urls.py', 'todo\\templates\\todo\\index.html', 'todo\\static\\todo\\css\\style.css', 'todo\\forms.py', 'todo\\templates\\todo\\delete.html', 'todo\\templates\\todo\\done.html', 'todo\\migrations\\0002_done.py', 'todo\\migrations\\0003_auto_20200529_2257.py', 'todo\\tests.py', 'todo\\apps.py', 'todo\\migrations\\0004_donetable_donetime.py']
+
